@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('tasks', TaskController::class);
-Route::resource('priorities', TaskPriorityController::class);
+    Route::apiResource('tasks', TaskController::class)->middleware(('cors'));
+    Route::apiResource('priorities', TaskPriorityController::class)->middleware(('cors'));
